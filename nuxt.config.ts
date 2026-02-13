@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "motion-v/nuxt",
     "@nuxt/image",
+    "@nuxtjs/seo",
   ],
   // Module Configuration
   eslint: {
