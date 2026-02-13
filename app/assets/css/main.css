@@ -1,2 +1,123 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme {
+  /* Fonts */
+  --font-display: "Playfair Display", serif;
+  --font-body: "Poppins", sans-serif;
+
+  /* Colors */
+  --color-background: oklch(0.98 0.01 95);
+  --color-foreground: oklch(0.22 0.02 95);
+
+  --color-card: oklch(0.97 0.015 95);
+  --color-card-foreground: oklch(0.22 0.02 95);
+
+  --color-popover: oklch(0.97 0.015 95);
+  --color-popover-foreground: oklch(0.22 0.02 95);
+
+  --color-primary: oklch(0.6995 0.1397 94.69);
+  --color-primary-foreground: oklch(0.98 0.01 95);
+
+  --color-secondary: oklch(0.55 0.1 125);
+  --color-secondary-foreground: oklch(0.98 0.01 95);
+
+  --color-muted: oklch(0.93 0.02 95);
+  --color-muted-foreground: oklch(0.45 0.02 95);
+
+  --color-accent: oklch(0.88 0.06 90);
+  --color-accent-foreground: oklch(0.22 0.02 95);
+
+  --color-destructive: oklch(0.62 0.22 25);
+  --color-destructive-foreground: oklch(1 0 0);
+
+  --color-border: oklch(0.86 0.02 95);
+  --color-input: oklch(0.86 0.02 95);
+  --color-ring: oklch(0.6995 0.1397 94.69);
+  --radius: 0.5rem;
+
+  --color-gold: oklch(0.6995 0.1397 94.69);
+  --color-gold-light: oklch(0.8702 0.0966 96.95);
+  --color-gold-dark: oklch(0.5272 0.1043 96.06);
+
+  --color-ivory: oklch(0.98 0.01 95);
+  --color-ivory-dark: oklch(0.93 0.02 95);
+
+  --color-olive: oklch(0.55 0.1 125);
+  --color-olive-light: oklch(0.65 0.08 125);
+
+  --color-charcoal: oklch(0.28 0.02 95);
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px oklch(0.22 0.02 95 / 0.08);
+  --shadow-gold: 0 4px 30px oklch(0.6995 0.1397 94.69);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+.section-padding {
+  @apply px-6 py-20 md:px-12 md:py-28 lg:px-20 lg:py-32;
+}
+
+.container-wedding {
+  @apply mx-auto max-w-6xl;
+}
+
+.gold-underline {
+  @apply relative inline-block;
+}
+
+.gold-underline::after {
+  content: "";
+  @apply absolute bottom-0 left-0 h-0.5 w-full bg-primary;
+}
+
+.card-wedding {
+  @apply rounded-lg bg-card p-8 border border-border/50;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-gold {
+  @apply rounded-full bg-primary px-8 py-4 font-body font-medium tracking-wide text-primary-foreground cursor-pointer transition-colors duration-300;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-gold:hover {
+  background-color: var(--color-gold-dark);
+}
+
+.btn-outline-gold {
+  @apply rounded-full border-2 border-primary px-8 py-4 font-body font-medium tracking-wide text-primary
+          transition-all duration-300;
+}
+
+.btn-outline-gold:hover {
+  @apply bg-primary text-primary-foreground;
+}
+
+.input-wedding {
+  @apply w-full rounded-lg border border-border bg-background px-4 py-3 font-body
+          transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary;
+}
+
+.textarea-wedding {
+  @apply w-full resize-none rounded-lg border border-border bg-background px-4 py-3 font-body
+          transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary;
+}
