@@ -9,5 +9,39 @@ export default defineAppConfig({
         links: "mt-8 flex items-center justify-center gap-6",
       },
     },
+    header: {
+      slots: {
+        left: "flex items-center gap-1.5 shrink-0",
+        center: "hidden lg:flex flex-1 justify-end items-center",
+        right: "lg:hidden flex items-center justify-end gap-1.5",
+      },
+    },
+    navigationMenu: {
+      slots: {
+        list: "items-center gap-16 isolate min-w-0",
+        link: "group relative w-full flex items-center gap-1.5 font-medium text-sm transition-colors duration-300",
+      },
+      compoundVariants: [
+        {
+          orientation: "horizontal",
+          variant: "link",
+          active: false,
+          class: {
+            link: "hover:text-primary/80",
+          },
+        },
+        {
+          highlight: true,
+          active: true,
+          orientation: "horizontal",
+          class: {
+            link: [
+              "after:-bottom-0.5 after:h-[2px] after:bg-primary",
+              "after:transition-transform after:duration-300",
+            ],
+          },
+        },
+      ],
+    },
   },
 });
