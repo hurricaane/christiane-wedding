@@ -24,23 +24,12 @@ const navigationItems = computed<NavigationMenuItem[]>(() => [
     active: route.path.startsWith("/rsvp"),
   },
 ]);
-const isScrolled = ref(false);
 
-function handleScroll() {
-  isScrolled.value = window.scrollY > 50;
-}
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
-
-onBeforeUnmount(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+const isHomepage = computed(() => route.path === "/");
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <div :class="{ 'h-screen overflow-hidden': isHomepage, 'min-h-screen': !isHomepage }">
     <Motion
       as-child
       :initial="{ y: -100 }"
@@ -49,20 +38,20 @@ onBeforeUnmount(() => {
     >
       <UHeader
         mode="drawer"
-        class="border-0 transition-all duration-300"
+        class="border-0 transition-all duration-300 w-full z-50"
         :class="[
-          isScrolled
-            ? 'bg-background/95 backdrop-blur-md shadow-sm'
-            : 'bg-transparent',
+          isHomepage
+            ? 'absolute bg-transparent shadow-none backdrop-blur-none'
+            : 'sticky top-0 bg-background/95 backdrop-blur-md shadow-sm',
         ]"
       >
         <template #title>
           <h1
-            class="text-3xl items-center transition-colors duration-200"
+            class="text-3xl items-center hover:text-primary transition-colors duration-200"
             :class="[
-              isScrolled
-                ? 'text-foreground hover:text-primary'
-                : 'text-foreground hover:text-gold-light',
+              isHomepage
+                ? 'text-primary-foreground'
+                : 'text-foreground',
             ]"
           >
             C & S
@@ -73,6 +62,11 @@ onBeforeUnmount(() => {
           :items="navigationItems"
           :highlight="true"
           variant="link"
+          :ui="{
+            link: [
+              isHomepage && 'text-primary-foreground/80 hover:text-primary-foreground data-[active]:text-primary-foreground data-[active]:after:bg-primary-foreground',
+            ],
+          }"
         />
 
         <!-- Mobile Menu Button -->
@@ -116,7 +110,11 @@ onBeforeUnmount(() => {
         </template>
       </UHeader>
     </Motion>
-    <slot />
-    <UFooter />
+
+    <UMain>
+      <slot />
+    </UMain>
+
+    <UFooter v-if="!isHomepage" />
   </div>
 </template>

@@ -19,7 +19,7 @@ export default defineAppConfig({
     navigationMenu: {
       slots: {
         list: "items-center gap-16 isolate min-w-0",
-        link: "group relative w-full flex items-center gap-1.5 font-medium text-sm transition-colors duration-300",
+        link: "group relative w-full flex items-center gap-1.5 font-medium text-sm text-foreground/80 transition-colors duration-300",
       },
       compoundVariants: [
         {
@@ -27,7 +27,7 @@ export default defineAppConfig({
           variant: "link",
           active: false,
           class: {
-            link: "hover:text-primary/80",
+            link: "hover:text-primary",
           },
         },
         {
@@ -36,7 +36,7 @@ export default defineAppConfig({
           orientation: "horizontal",
           class: {
             link: [
-              "after:-bottom-0.5 after:h-[2px] after:bg-primary",
+              "after:-bottom-0.5 after:h-[2px] after:bg-foreground",
               "after:transition-transform after:duration-300",
             ],
           },
