@@ -1,8 +1,10 @@
 <template>
   <UApp>
-    <NuxtRouteAnnouncer />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    <WeddingLoader :min-loading-time="3500">
+      <NuxtRouteAnnouncer />
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </WeddingLoader>
   </UApp>
 </template>
