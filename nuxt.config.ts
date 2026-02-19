@@ -13,6 +13,16 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
+  app: {
+    head: {
+      htmlAttrs: {
+        class: "h-full",
+      },
+      bodyAttrs: {
+        class: "antialiased overflow-x-hidden",
+      },
+    },
+  },
   modules: [
     "@nuxt/eslint",
     "@nuxt/ui",

@@ -53,7 +53,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="relative min-h-screen">
+  <div class="relative min-h-dvh overflow-hidden">
     <AnimatePresence>
       <motion.div
         v-if="isLoading"
