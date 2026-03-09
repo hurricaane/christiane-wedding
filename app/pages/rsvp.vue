@@ -69,7 +69,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         class="text-center mb-16"
       >
         <p
-          class="font-body text-sm tracking-widest uppercase px-4 py-1 rounded-full bg-primary/10 font-bold inline-block text-primary mb-4"
+          class="font-body text-sm tracking-widest uppercase px-4 py-1 rounded-full bg-marine/10 font-bold inline-block text-marine mb-4"
         >
           Confirmez votre présence
         </p>
@@ -80,13 +80,13 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           Veuillez répondre avant le 20 Avril 2026
         </p>
         <div class="flex items-center justify-center gap-4 mt-6">
-          <div class="w-16 h-px bg-primary" />
+          <div class="w-16 h-px bg-sable/60" />
           <Icon
             name="i-lucide-heart"
-            class="text-primary"
+            class="text-sable"
             size="20"
           />
-          <div class="w-16 h-px bg-primary" />
+          <div class="w-16 h-px bg-sable/60" />
         </div>
       </motion.div>
 
@@ -94,7 +94,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         :initial="{ opacity: 0, y: 30 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8, delay: 0.2 }"
-        class="bg-card border border-primary/10 shadow-xl rounded-2xl p-8 md:p-12"
+        class="bg-card border border-marine/10 shadow-xl rounded-2xl p-8 md:p-12"
       >
         <UForm
           :schema="schema"
@@ -164,7 +164,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
             leave-from-class="opacity-100 translate-y-0 max-h-[500px]"
             leave-to-class="opacity-0 -translate-y-4 max-h-0"
           >
-            <div v-if="state.attending === 'yes'" class="space-y-8 pt-4 border-t border-primary/5">
+            <div v-if="state.attending === 'yes'" class="space-y-8 pt-4 border-t border-marine/10">
               <UFormField
                 label="À quel(s) événement(s) ?"
                 name="locations"

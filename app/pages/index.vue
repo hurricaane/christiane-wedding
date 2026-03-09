@@ -35,18 +35,18 @@ function handleClose(e: Event) {
             :transition="{ duration: 0.8, delay: 0.4 }"
             class="font-display italic text-6xl md:text-8xl lg:text-9xl drop-shadow-2xl mb-8"
           >
-            Christiane <span class="text-primary">&</span> Stéphane
+            Christiane <span class="text-sable">&</span> Stéphane
           </motion.h1>
 
           <motion.div
             :initial="{ opacity: 0, y: 20 }"
             :animate="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.8, delay: 0.6 }"
-            class="flex items-center justify-center gap-6 opacity-40"
+            class="flex items-center justify-center gap-6 opacity-50"
           >
-            <div class="w-12 h-px bg-primary-foreground" />
+            <div class="w-12 h-px bg-sable/60" />
             <span class="text-[10px] uppercase tracking-[0.4em]">Choisissez une destination</span>
-            <div class="w-12 h-px bg-primary-foreground" />
+            <div class="w-12 h-px bg-sable/60" />
           </motion.div>
         </motion.div>
       </div>

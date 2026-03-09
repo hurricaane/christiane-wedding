@@ -121,7 +121,7 @@ const isHomepage = computed(() => route.path === "/");
 
     <UFooter
       v-if="!isHomepage"
-      class="bg-charcoal border-t border-white/10 pt-12 pb-4"
+      class="bg-marine border-t border-white/10 pt-12 pb-4"
       :ui="{
         top: 'py-0', // Reduce default top padding if needed
         bottom: 'py-0', // Overrides the py-8 lg:py-12 from your app.config.ts
@@ -130,26 +130,26 @@ const isHomepage = computed(() => route.path === "/");
     >
       <template #top>
         <div class="flex flex-col items-center text-center">
-          <h3 class="font-display text-3xl md:text-4xl text-white mb-4">
+          <h3 class="font-display text-3xl md:text-4xl text-ivory mb-4">
             Christiane
-            <span class="text-primary italic">&</span>
+            <span class="text-sable italic">&</span>
             Stéphane
           </h3>
 
           <div
-            class="font-body text-sm tracking-widest text-white/60 mb-6 flex flex-col md:flex-row items-center gap-2 md:gap-4"
+            class="font-body text-sm tracking-widest text-ivory/50 mb-6 flex flex-col md:flex-row items-center gap-2 md:gap-4"
           >
             <span>20 Juin 2026 • Montréal</span>
-            <span class="hidden md:block opacity-30">|</span>
+            <span class="hidden md:block text-sable/40">•</span>
             <span>15 Décembre 2026 • Cotonou</span>
           </div>
 
-          <div class="flex items-center justify-center gap-2 text-primary">
+          <div class="flex items-center justify-center gap-2 text-sable/80">
             <span class="text-sm uppercase tracking-tighter">Fait avec</span>
             <UIcon
               name="i-lucide-heart"
               size="14"
-              class="fill-current animate-pulse"
+              class="fill-current animate-pulse text-sable"
             />
             <span class="text-sm uppercase tracking-tighter">pour notre grand jour</span>
           </div>
@@ -157,8 +157,8 @@ const isHomepage = computed(() => route.path === "/");
       </template>
 
       <template #bottom>
-        <div class="w-full border-t-2 border-primary-foreground/10 pt-8">
-          <p class="font-body text-xs text-primary-foreground/40 tracking-widest text-center uppercase">
+        <div class="w-full border-t border-ivory/10 pt-8">
+          <p class="font-body text-xs text-ivory/30 tracking-widest text-center uppercase">
             © {{ new Date().getFullYear() }} Lumina Consulting. Tous droits réservés.
           </p>
         </div>

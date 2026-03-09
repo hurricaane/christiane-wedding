@@ -12,11 +12,11 @@ defineEmits(["open-map"]);
     :transition="{ duration: 0.6, delay: 0.2 + index * 0.1 }"
     class="card-wedding flex flex-col items-center text-center transition-transform hover:-translate-y-2"
   >
-    <div class="w-16 h-16 rounded-full bg-primary/20 ring-2 ring-primary/40 flex items-center justify-center mb-6">
-      <Icon :name="event.icon" class="text-primary w-7 h-7" />
+    <div class="w-16 h-16 rounded-full bg-sable/15 ring-1 ring-sable/30 flex items-center justify-center mb-6">
+      <Icon :name="event.icon" class="text-sable-dark w-7 h-7" />
     </div>
 
-    <span class="text-primary font-body font-bold text-sm tracking-widest uppercase mb-2">
+    <span class="text-marine font-body font-bold text-sm tracking-widest uppercase mb-2">
       {{ event.time }}
     </span>
 
@@ -29,11 +29,11 @@ defineEmits(["open-map"]);
     </p>
 
     <div class="flex items-center justify-center gap-2 text-muted-foreground text-sm mb-6">
-      <Icon name="i-lucide-map-pin" class="w-4 h-4 text-primary" />
-      <span>{{ event.location }}</span>
+      <Icon name="i-lucide-map-pin" class="w-4 h-4 text-olive" />
+      <span class="text-olive/80">{{ event.location }}</span>
     </div>
 
-    <div class="w-full h-48 mb-6 rounded-lg overflow-hidden border border-primary/10">
+    <div class="w-full h-48 mb-6 rounded-lg overflow-hidden border border-marine/10">
       <NuxtImg
         :src="event.imageUrl"
         class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"

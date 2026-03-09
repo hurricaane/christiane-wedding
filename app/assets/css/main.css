@@ -7,50 +7,54 @@
   --font-body: "Poppins", sans-serif;
 
   /* Colors */
-  --color-background: oklch(0.98 0.01 95);
-  --color-foreground: oklch(0.22 0.02 95);
+  /* Palette: Crème ivoire chaud #F5EDE3 · Ambre chaud ≈#C4823C · Vert olive noble #556947 · Bleu profond méditerranéen #0B5665 · Terre quite elegante #C23A5C */
 
-  --color-card: oklch(0.97 0.015 95);
-  --color-card-foreground: oklch(0.22 0.02 95);
+  --color-background: oklch(0.95 0.015 78); /* #F5EDE3 crème ivoire chaud */
+  --color-foreground: oklch(0.25 0.04 218); /* dark blue-teal from #0B5665 */
 
-  --color-popover: oklch(0.97 0.015 95);
-  --color-popover-foreground: oklch(0.22 0.02 95);
+  --color-card: oklch(0.97 0.01 78);
+  --color-card-foreground: oklch(0.25 0.04 218);
 
-  --color-primary: oklch(0.6995 0.1397 94.69);
-  --color-primary-foreground: oklch(0.98 0.01 95);
+  --color-popover: oklch(0.97 0.01 78);
+  --color-popover-foreground: oklch(0.25 0.04 218);
 
-  --color-secondary: oklch(0.55 0.1 125);
-  --color-secondary-foreground: oklch(0.98 0.01 95);
+  --color-primary: oklch(0.71 0.13 52); /* warm amber — complement of marine */
+  --color-primary-foreground: oklch(0.97 0.01 78); /* ivory — readable on amber bg */
 
-  --color-muted: oklch(0.93 0.02 95);
-  --color-muted-foreground: oklch(0.45 0.02 95);
+  --color-secondary: oklch(0.44 0.065 135); /* #556947 vert olive noble */
+  --color-secondary-foreground: oklch(0.95 0.015 78);
 
-  --color-accent: oklch(0.88 0.06 90);
-  --color-accent-foreground: oklch(0.22 0.02 95);
+  --color-muted: oklch(0.91 0.02 78);
+  --color-muted-foreground: oklch(0.5 0.03 78);
 
-  --color-destructive: oklch(0.62 0.22 25);
+  --color-accent: oklch(0.9 0.04 52); /* soft amber tint */
+  --color-accent-foreground: oklch(0.25 0.04 218);
+
+  --color-destructive: oklch(0.5 0.17 8); /* #C23A5C terre quite elegante */
   --color-destructive-foreground: oklch(1 0 0);
 
-  --color-border: oklch(0.86 0.02 95);
-  --color-input: oklch(0.86 0.02 95);
-  --color-ring: oklch(0.6995 0.1397 94.69);
+  --color-border: oklch(0.88 0.02 78);
+  --color-input: oklch(0.88 0.02 78);
+  --color-ring: oklch(0.71 0.13 52); /* warm amber */
   --radius: 0.5rem;
 
-  --color-gold: oklch(0.6995 0.1397 94.69);
-  --color-gold-light: oklch(0.8702 0.0966 96.95);
-  --color-gold-dark: oklch(0.5272 0.1043 96.06);
+  --color-sable: oklch(0.71 0.13 52); /* warm amber — ≈ #C4823C */
+  --color-sable-light: oklch(0.84 0.09 54);
+  --color-sable-dark: oklch(0.55 0.15 50);
 
-  --color-ivory: oklch(0.98 0.01 95);
-  --color-ivory-dark: oklch(0.93 0.02 95);
+  --color-ivory: oklch(0.95 0.015 78); /* #F5EDE3 crème ivoire chaud */
+  --color-ivory-dark: oklch(0.9 0.02 78);
 
-  --color-olive: oklch(0.55 0.1 125);
-  --color-olive-light: oklch(0.65 0.08 125);
+  --color-olive: oklch(0.44 0.065 135); /* #556947 vert olive noble */
+  --color-olive-light: oklch(0.57 0.065 135);
 
-  --color-charcoal: oklch(0.28 0.02 95);
+  --color-marine: oklch(0.36 0.07 218); /* #0B5665 bleu profond méditerranéen */
+
+  --color-terre: oklch(0.5 0.17 8); /* #C23A5C terre quite elegante */
 
   /* Shadows */
-  --shadow-soft: 0 4px 20px oklch(0.22 0.02 95 / 0.08);
-  --shadow-gold: 0 4px 30px oklch(0.6995 0.1397 94.69);
+  --shadow-soft: 0 4px 20px oklch(0.25 0.04 218 / 0.08);
+  --shadow-sable: 0 4px 30px oklch(0.71 0.13 52 / 0.35);
 }
 
 @layer base {
@@ -80,11 +84,11 @@
   @apply mx-auto max-w-6xl;
 }
 
-.gold-underline {
+.sable-underline {
   @apply relative inline-block;
 }
 
-.gold-underline::after {
+.sable-underline::after {
   content: "";
   @apply absolute bottom-0 left-0 h-0.5 w-full bg-primary;
 }
@@ -94,21 +98,21 @@
   box-shadow: var(--shadow-soft);
 }
 
-.btn-gold {
+.btn-sable {
   @apply rounded-full bg-primary px-8 py-4 font-body font-medium tracking-wide text-primary-foreground cursor-pointer transition-colors duration-300;
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-sable);
 }
 
-.btn-gold:hover {
-  background-color: var(--color-gold-dark);
+.btn-sable:hover {
+  background-color: var(--color-sable-dark);
 }
 
-.btn-outline-gold {
+.btn-outline-sable {
   @apply rounded-full border-2 border-primary px-8 py-4 font-body font-medium tracking-wide text-primary
           transition-all duration-300;
 }
 
-.btn-outline-gold:hover {
+.btn-outline-sable:hover {
   @apply bg-primary text-primary-foreground;
 }
 

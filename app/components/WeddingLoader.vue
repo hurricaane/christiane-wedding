@@ -67,30 +67,30 @@ onMounted(async () => {
         class="fixed inset-0 z-100 flex items-center justify-center bg-ivory origin-top"
       >
         <div class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
-          <div class="absolute -top-24 -left-24 w-96 h-96 border border-gold/30 rounded-full" />
-          <div class="absolute -bottom-24 -right-24 w-96 h-96 border border-gold/30 rounded-full" />
+          <div class="absolute -top-24 -left-24 w-96 h-96 border border-sable/30 rounded-full" />
+          <div class="absolute -bottom-24 -right-24 w-96 h-96 border border-sable/30 rounded-full" />
         </div>
 
         <div class="relative w-80 h-48 flex items-center justify-center">
-          <div class="absolute inset-0 bg-ivory-dark border border-gold/10 rounded-sm shadow-inner" />
+          <div class="absolute inset-0 bg-ivory-dark border border-sable/10 rounded-sm shadow-inner" />
 
           <motion.div
             v-if="isOpening"
             :initial="{ y: 20, opacity: 0, scale: 0.9 }"
             :animate="{ y: -140, opacity: 1, scale: 1 }"
             :transition="{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }"
-            class="absolute w-72 h-80 bg-white shadow-2xl rounded-sm p-6 z-50 flex flex-col items-center justify-center border border-gold/5"
+            class="absolute w-72 h-80 bg-white shadow-2xl rounded-sm p-6 z-50 flex flex-col items-center justify-center border border-sable/5"
           >
-            <div class="w-full h-full border border-gold/20 p-4 flex flex-col items-center justify-center relative">
-              <div class="absolute top-2 left-2 w-4 h-4 border-t border-l border-gold/40" />
-              <div class="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-gold/40" />
+            <div class="w-full h-full border border-sable/20 p-4 flex flex-col items-center justify-center relative">
+              <div class="absolute top-2 left-2 w-4 h-4 border-t border-l border-sable/40" />
+              <div class="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-sable/40" />
 
-              <Icon name="i-lucide-sparkles" class="text-gold w-8 h-8 mb-4" />
+              <Icon name="i-lucide-sparkles" class="text-sable w-8 h-8 mb-4" />
               <h2 class="font-display italic text-3xl text-foreground text-center px-2 leading-tight">
                 Christiane & Stéphane
               </h2>
-              <div class="h-px w-16 bg-gold/40 my-4" />
-              <p class="font-body text-xs tracking-widest uppercase text-gold-dark font-bold text-center">
+              <div class="h-px w-16 bg-sable/40 my-4" />
+              <p class="font-body text-xs tracking-widest uppercase text-sable-dark font-bold text-center">
                 20 Juin 2026<br>15 Décembre 2026
               </p>
               <p class="font-body text-[10px] text-muted-foreground mt-4 uppercase tracking-tighter">
@@ -117,7 +117,7 @@ onMounted(async () => {
             ]"
           >
             <div
-              class="w-14 h-14 bg-linear-to-br from-gold-light via-gold to-gold-dark rounded-full shadow-lg flex items-center justify-center"
+              class="w-14 h-14 bg-linear-to-br from-sable-light via-sable to-sable-dark rounded-full shadow-lg flex items-center justify-center"
               style="box-shadow: 0 4px 12px rgba(184, 149, 106, 0.4), inset 0 -2px 4px rgba(0,0,0,0.2);"
             >
               <Icon name="i-lucide-heart" class="text-ivory w-7 h-7 fill-current drop-shadow-sm" />

@@ -129,21 +129,21 @@ function closeModal() {
         class="text-center mb-12"
       >
         <p
-          class="font-body text-sm tracking-widest uppercase px-4 py-1 rounded-full bg-primary/10 font-bold inline-block text-primary mb-4"
+          class="font-body text-sm tracking-widest uppercase px-4 py-1 rounded-full bg-marine/10 font-bold inline-block text-marine mb-4"
         >
           Célébration
         </p>
         <h2 class="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-          La <span class="text-primary">Cérémonie</span>
+          La <span class="text-sable">Cérémonie</span>
         </h2>
         <div class="flex items-center justify-center gap-4">
-          <div class="w-16 h-px bg-primary" />
+          <div class="w-16 h-px bg-sable/60" />
           <Icon
             name="i-lucide-heart"
-            class="text-primary"
+            class="text-sable"
             size="20"
           />
-          <div class="w-16 h-px bg-primary" />
+          <div class="w-16 h-px bg-sable/60" />
         </div>
       </motion.div>
 
@@ -197,7 +197,7 @@ function closeModal() {
       <Transition name="modal">
         <div
           v-if="isModalOpen"
-          class="fixed inset-0 z-200 flex items-center justify-center bg-charcoal/80 backdrop-blur-sm px-4"
+          class="fixed inset-0 z-200 flex items-center justify-center bg-marine/80 backdrop-blur-sm px-4"
           @click="closeModal"
         >
           <motion.div

@@ -41,15 +41,15 @@ const emit = defineEmits(["close"]);
         :transition="{ duration: 0.8, delay: 0.6 }"
         class="flex items-center justify-center gap-4 my-8"
       >
-        <div class="w-16 md:w-24 h-px bg-primary" />
+        <div class="w-16 md:w-24 h-px bg-sable/70" />
         <span>
           <Icon
             name="i-lucide-heart"
             size="1.2em"
-            class="text-primary"
+            class="text-sable"
           />
         </span>
-        <div class="w-16 md:w-24 h-px bg-primary" />
+        <div class="w-16 md:w-24 h-px bg-sable/70" />
       </motion.div>
 
       <motion.p
