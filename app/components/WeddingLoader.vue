@@ -91,7 +91,7 @@ onMounted(async () => {
               </h2>
               <div class="h-px w-16 bg-sable/40 my-4" />
               <p class="font-body text-xs tracking-widest uppercase text-sable-dark font-bold text-center">
-                20 Juin 2026<br>15 Décembre 2026
+                20 Juin 2026<br>19 Décembre 2026
               </p>
               <p class="font-body text-[10px] text-muted-foreground mt-4 uppercase tracking-tighter">
                 MONTRÉAL | COTONOU
@@ -127,15 +127,12 @@ onMounted(async () => {
       </motion.div>
     </AnimatePresence>
 
-    <Transition
-      enter-active-class="transition-opacity duration-1000 delay-300 ease-out"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
+    <div
+      class="font-body transition-opacity duration-1000 ease-out"
+      :class="showContent ? 'opacity-100' : 'opacity-0 pointer-events-none'"
     >
-      <div v-if="showContent" class="font-body">
-        <slot />
-      </div>
-    </Transition>
+      <slot />
+    </div>
   </div>
 </template>
 

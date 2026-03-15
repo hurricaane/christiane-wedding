@@ -10,19 +10,8 @@ const schema = z.object({
   attending: z.enum(["yes", "no"], {
     error: "Veuillez nous indiquer votre présence.",
   }),
-  locations: z.array(z.string()).optional(),
   dietary: z.string().optional(),
   message: z.string().optional(),
-}).superRefine((data, ctx) => {
-  if (data.attending === "yes") {
-    if (!data.locations || data.locations.length === 0) {
-      ctx.addIssue({
-        code: "custom",
-        path: ["locations"],
-        message: "Veuillez sélectionner au moins un lieu.",
-      });
-    }
-  }
 });
 
 type Schema = z.output<typeof schema>;
@@ -31,16 +20,11 @@ const state = reactive<Partial<Schema>>({
   name: "",
   email: "",
   attending: undefined,
-  locations: [],
   dietary: "",
   message: "",
 });
 
 const isSubmitting = ref(false);
-const locationOptions = [
-  { label: "Montréal (20 juin)", value: "montreal" },
-  { label: "Cotonou (15 décembre)", value: "cotonou" },
-];
 
 const presenceOptions = [
   { label: "Je serai présent(e) avec joie", value: "yes" },
@@ -76,8 +60,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         <h1 class="text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
           RSVP
         </h1>
-        <p class="font-display text-muted-foreground tracking-wide uppercase text-sm">
-          Veuillez répondre avant le 20 Avril 2026
+        <p class="font-display text-muted-foreground tracking-wide uppercase text-lg md:text-xl">
+          Cotonou — 19 Décembre 2026
         </p>
         <div class="flex items-center justify-center gap-4 mt-6">
           <div class="w-16 h-px bg-sable/60" />
@@ -166,25 +150,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           >
             <div v-if="state.attending === 'yes'" class="space-y-8 pt-4 border-t border-marine/10">
               <UFormField
-                label="À quel(s) événement(s) ?"
-                name="locations"
-                required
-                :ui="{ label: 'text-foreground font-semibold mb-4' }"
-              >
-                <UCheckboxGroup
-                  v-model="state.locations"
-                  :items="locationOptions"
-                  class="mt-2 w-full"
-                  :ui="{
-                    fieldset: 'grid md:grid-cols-2 gap-4',
-                    label: 'text-foreground font-medium cursor-pointer',
-                    item: 'p-4 border border-primary/10 rounded-xl bg-ivory/40 has-[[data-state=checked]]:border-primary has-[[data-state=checked]]:bg-primary/5 transition-all',
-                    indicator: 'text-ivory',
-                  }"
-                />
-              </UFormField>
-
-              <UFormField
                 label="Restrictions ou allergies alimentaires"
                 name="dietary"
                 :ui="{ label: 'text-foreground font-semibold mb-2' }"
@@ -204,7 +169,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           </Transition>
 
           <UFormField
-            label="Un message pour les mariés ?"
+            label="Un message ou une question pour les mariés ?"
             name="message"
             :ui="{ label: 'text-foreground font-semibold mb-2' }"
           >

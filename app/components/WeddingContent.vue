@@ -17,14 +17,19 @@ const emit = defineEmits(["close"]);
       :exit="{ opacity: 0, scale: 0.9, transition: { duration: 0.5 } }"
       class="text-center text-primary-foreground px-6 max-w-5xl mx-auto"
     >
-      <motion.p
+      <motion.div
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8, delay: 0.2 }"
-        class="font-body text-xs md:text-sm tracking-[0.5em] uppercase mb-4 opacity-80"
+        class="inline-flex items-center gap-2 mb-4 opacity-60"
       >
-        Nous nous marions à
-      </motion.p>
+        <Icon
+          name="i-lucide-map-pin"
+          size="13"
+          class="text-sable"
+        />
+        <span class="font-body text-xs md:text-sm tracking-[0.5em] uppercase">{{ location }}</span>
+      </motion.div>
 
       <motion.h2
         :initial="{ opacity: 0, y: 30 }"
@@ -61,15 +66,6 @@ const emit = defineEmits(["close"]);
         {{ date }}
       </motion.p>
 
-      <motion.p
-        :initial="{ opacity: 0, y: 20 }"
-        :animate="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 0.8, delay: 1 }"
-        class="font-body text-base tracking-[0.3em] uppercase opacity-60"
-      >
-        {{ location }}
-      </motion.p>
-
       <motion.div
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
@@ -77,16 +73,25 @@ const emit = defineEmits(["close"]);
         class="flex flex-col items-center gap-10 mt-20"
       >
         <UButton
+          v-if="side === 'right'"
           label="Confirmer ma présence"
           color="primary"
           size="xl"
           class="rounded-full px-14 py-5 shadow-2xl font-body tracking-widest text-sm hover:scale-105 transition-all text-primary-foreground hover:bg-primary/85 cursor-pointer"
           to="/rsvp"
         />
+        <UButton
+          v-else
+          label="Voir la cérémonie"
+          color="primary"
+          size="xl"
+          class="rounded-full px-14 py-5 shadow-2xl font-body tracking-widest text-sm hover:scale-105 transition-all text-primary-foreground hover:bg-primary/85 cursor-pointer"
+          to="/ceremonie"
+        />
 
         <button
           type="button"
-          class="flex items-center gap-4 text-primary-foreground/40 hover:text-primary-foreground transition-all uppercase tracking-[0.4em] text-[10px] cursor-pointer group py-4"
+          class="flex items-center gap-4 text-primary-foreground md:text-primary-foreground/40 hover:text-primary-foreground transition-all uppercase tracking-[0.4em] text-xs cursor-pointer group py-4"
           @click.stop="emit('close', $event)"
         >
           <Icon

@@ -12,33 +12,31 @@ const timelineInView = useInView(timelineRef, { once: true, margin: "-100px" });
 const timeline = [
   {
     title: "La Rencontre",
-    subtitle: "Le début de tout",
-    place: "Dakar, 2021",
-    description: "Un premier regard échangé sous les baobabs.",
+    subtitle: "L'été qui a tout changé",
+    place: "Montréal, 2019",
+    description: "Un premier regard échangé dans l'appartement d'un ami commun, puis une rencontre fortuite devant la gare routière de Montréal — on ne s'est plus quittés.",
     icon: "i-lucide-heart",
   },
   {
     title: "Le Premier Rendez-vous",
-    subtitle: "Une soirée magique",
-    place: "Almadies, 2022",
-    description: "Dîner face à l'océan, des heures de discussion.",
+    subtitle: "Le début d'une belle série",
+    place: "Montréal, 15 juin 2019",
+    description: "Un dîner au Randolph dans le Quartier Latin, organisé en prélude à mon anniversaire. Le début d'une longue série de moments précieux, tombant amoureux doucement et passionnément.",
     icon: "i-lucide-utensils",
   },
   {
-    title: "La Demande",
-    subtitle: "Le “Oui” tant attendu",
-    place: "Île de Gorée, 2024",
-    description:
-      "Un moment suspendu dans le temps, entre histoire et futur.",
+    title: "Les Fiançailles",
+    subtitle: "Le grand « Oui »",
+    place: "Manarola, 3 septembre 2025",
+    description: "Parmi les vignes de Manarola, il s'est agenouillé. Submergée de surprise, d'émotion et de joie, j'ai dit oui de tout mon cœur.",
     icon: "i-lucide-gem",
     highlight: true,
   },
   {
     title: "Le Grand Jour",
     subtitle: "Unis pour la vie",
-    place: "Dakar, 2026",
-    description:
-      "Entourés de nos proches, nous célébrerons notre union.",
+    place: "Montréal 2026 & Cotonou 2026",
+    description: "Entourés de nos proches, nous célébrerons notre union.",
     icon: "i-lucide-party-popper",
   },
 ];
@@ -56,11 +54,11 @@ const timeline = [
       <p
         class="font-body text-sm tracking-widest uppercase px-4 py-1 rounded-full bg-marine/10 font-bold inline-block text-marine mb-4"
       >
-        Depuis 2021
+        Depuis 2019
       </p>
 
       <h2 class="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-        Notre <span class="text-sable">Histoire</span>
+        Notre Histoire
       </h2>
 
       <div class="flex items-center justify-center gap-4">
@@ -104,29 +102,36 @@ const timeline = [
         <div class="flex flex-col gap-8">
           <div>
             <h3 class="text-2xl md:text-3xl font-bold text-marine mb-6">
-              D'une rencontre à Dakar vers l'éternité
+              Un amour bâti à deux
             </h3>
 
             <div class="space-y-6 text-lg leading-relaxed text-muted-foreground">
               <p>
-                Notre voyage a commencé dans les rues animées de Dakar. Entre les
-                couchers de soleil sur la Corniche et les moments partagés en
-                famille, notre amour a grandi.
+                À l'été 2019, leurs regards se croisent dans l'appartement d'un ami commun. Ils ignorent encore que
+                ce moment marquera le début de leur histoire. Peu après, la main de Dieu les réunit devant la gare
+                d'autobus de Montréal : d'abord presque comme des inconnus, ils se découvrent très vite comme une
+                évidence.
               </p>
               <p>
-                Ensemble, nous avons exploré, rêvé, construit un foyer rempli de
-                projets et de promesses.
+                S'ensuit leur premier rendez-vous au Randolph du Quartier Latin, où leur histoire commence
+                véritablement. Rencontre après rencontre, ils apprennent à se connaître, dévoilent leurs
+                personnalités et tombent amoureux, lentement et passionnément.
               </p>
               <p>
-                Nous sommes impatients de célébrer ce nouveau chapitre avec vous,
-                là où tout a commencé.
+                Six ans plus tard, leur amour les mène jusqu'aux paysages enchanteurs des Cinque Terre. C'est à
+                Manarola qu'à l'automne 2025, surplombant les vignobles et la mer, leur histoire prend un nouveau
+                tournant. Une demande en mariage inattendue, un genou à terre, et un « oui » rempli d'émotion.
+              </p>
+              <p>
+                Depuis ce jour, ils sont prêts à choisir chaque jour de s'aimer pour toujours, en scellant leur
+                union en 2026, entourés de leurs proches.
               </p>
             </div>
           </div>
           <div class="grid grid-cols-3 gap-4 border-t border-marine/20 pt-8">
             <div class="text-center">
               <p class="text-sable font-bold text-2xl">
-                5
+                7
               </p>
               <p class="text-xs uppercase text-marine/50 tracking-wider">
                 Années
@@ -134,10 +139,10 @@ const timeline = [
             </div>
             <div class="text-center border-x border-marine/20">
               <p class="text-sable font-bold text-2xl">
-                100+
+                2
               </p>
               <p class="text-xs uppercase text-marine/50 tracking-wider">
-                Couchers de soleil
+                Continents
               </p>
             </div>
             <div class="text-center">
@@ -145,7 +150,7 @@ const timeline = [
                 1
               </p>
               <p class="text-xs uppercase text-marine/50 tracking-wider">
-                Engagement
+                Fiançailles
               </p>
             </div>
           </div>
@@ -175,16 +180,16 @@ const timeline = [
             </p>
           </div>
 
-          <div class="flex flex-col items-center gap-1">
+          <div class="flex flex-col items-center gap-1 self-stretch">
             <div
-              class="flex items-center justify-center size-10 rounded-full"
+              class="flex items-center justify-center size-10 rounded-full shrink-0"
               :class="item.highlight
                 ? 'bg-sable text-ivory ring-4 ring-sable/25 shadow-md'
                 : 'bg-marine/10 text-marine'"
             >
               <Icon :name="item.icon" size="20" />
             </div>
-            <div v-if="i < timeline.length - 1" class="w-px h-16 bg-marine/15" />
+            <div v-if="i < timeline.length - 1" class="w-px flex-1 min-h-8 bg-marine/15" />
           </div>
 
           <div class="flex flex-col justify-center pb-12 md:pb-0">

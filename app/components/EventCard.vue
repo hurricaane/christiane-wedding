@@ -28,12 +28,12 @@ defineEmits(["open-map"]);
       {{ event.venue }}
     </p>
 
-    <div class="flex items-center justify-center gap-2 text-muted-foreground text-sm mb-6">
-      <Icon name="i-lucide-map-pin" class="w-4 h-4 text-olive" />
-      <span class="text-olive/80">{{ event.location }}</span>
+    <div class="flex items-start justify-center gap-2 text-muted-foreground text-sm mb-6">
+      <Icon name="i-lucide-map-pin" class="w-4 h-4 text-olive shrink-0 mt-0.5" />
+      <span class="text-olive/80 text-left">{{ event.location }}</span>
     </div>
 
-    <div class="w-full h-48 mb-6 rounded-lg overflow-hidden border border-marine/10">
+    <div class="w-full h-48 mb-6 rounded-lg overflow-hidden border border-marine/10 mt-auto">
       <NuxtImg
         :src="event.imageUrl"
         class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"

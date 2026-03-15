@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
+import { AnimatePresence, motion } from "motion-v";
+
 const route = useRoute();
 const navigationItems = computed<NavigationMenuItem[]>(() => [
   {
@@ -19,6 +21,11 @@ const navigationItems = computed<NavigationMenuItem[]>(() => [
     active: route.path.startsWith("/ceremonie"),
   },
   {
+    label: "FAQ",
+    to: "/faq",
+    active: route.path.startsWith("/faq"),
+  },
+  {
     label: "RSVP",
     to: "/rsvp",
     active: route.path.startsWith("/rsvp"),
@@ -26,6 +33,19 @@ const navigationItems = computed<NavigationMenuItem[]>(() => [
 ]);
 
 const isHomepage = computed(() => route.path === "/");
+
+const showScrollTop = ref(false);
+
+function onScroll() {
+  showScrollTop.value = window.scrollY > 300;
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+onMounted(() => window.addEventListener("scroll", onScroll, { passive: true }));
+onUnmounted(() => window.removeEventListener("scroll", onScroll));
 </script>
 
 <template>
@@ -141,7 +161,7 @@ const isHomepage = computed(() => route.path === "/");
           >
             <span>20 Juin 2026 • Montréal</span>
             <span class="hidden md:block text-sable/40">•</span>
-            <span>15 Décembre 2026 • Cotonou</span>
+            <span>19 Décembre 2026 • Cotonou</span>
           </div>
 
           <div class="flex items-center justify-center gap-2 text-sable/80">
@@ -164,5 +184,23 @@ const isHomepage = computed(() => route.path === "/");
         </div>
       </template>
     </UFooter>
+    <!-- Scroll to top — mobile only -->
+    <Teleport to="body">
+      <AnimatePresence>
+        <motion.button
+          v-if="showScrollTop && !isHomepage"
+          :initial="{ opacity: 0, scale: 0.7, y: 10 }"
+          :animate="{ opacity: 1, scale: 1, y: 0 }"
+          :exit="{ opacity: 0, scale: 0.7, y: 10 }"
+          :transition="{ duration: 0.25, type: 'spring', stiffness: 300, damping: 22 }"
+          :while-tap="{ scale: 0.9 }"
+          class="md:hidden fixed bottom-6 right-5 z-50 size-11 rounded-full bg-sable text-ivory shadow-lg flex items-center justify-center"
+          aria-label="Retour en haut"
+          @click="scrollToTop"
+        >
+          <UIcon name="i-lucide-arrow-up" size="18" />
+        </motion.button>
+      </AnimatePresence>
+    </Teleport>
   </div>
 </template>

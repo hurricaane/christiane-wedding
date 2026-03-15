@@ -18,7 +18,7 @@ export default defineAppConfig({
     },
     navigationMenu: {
       slots: {
-        list: "items-center gap-16 isolate min-w-0",
+        list: "items-center gap-12 isolate min-w-0",
         link: "group relative w-full flex items-center gap-1.5 font-medium text-sm text-foreground/80 transition-colors duration-300",
       },
       compoundVariants: [
