@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { motion, useInView } from "motion-v";
 
+useSeoMeta({
+  title: "Notre Histoire",
+  description: "De Montréal aux Cinque Terre — l'histoire d'amour de Christiane et Stéphane, depuis 2019.",
+});
+
 const headerRef = ref<HTMLElement | null>(null);
 const contentRef = ref<HTMLElement | null>(null);
 const timelineRef = ref<HTMLElement | null>(null);
@@ -171,7 +176,7 @@ const timeline = [
 
       <div class="grid grid-cols-[40px_1fr] md:grid-cols-[1fr_40px_1fr] gap-x-6 md:gap-x-10">
         <template v-for="(item, i) in timeline" :key="i">
-          <div class="hidden md:flex flex-col justify-center text-right">
+          <div class="hidden md:flex flex-col justify-center text-right md:py-6">
             <p class="text-marine font-bold">
               {{ item.title }}
             </p>
@@ -192,7 +197,7 @@ const timeline = [
             <div v-if="i < timeline.length - 1" class="w-px flex-1 min-h-8 bg-marine/15" />
           </div>
 
-          <div class="flex flex-col justify-center pb-12 md:pb-0">
+          <div class="flex flex-col justify-center pb-12 md:py-6">
             <p class="md:hidden text-marine font-bold">
               {{ item.title }}
             </p>

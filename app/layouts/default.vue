@@ -161,6 +161,8 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
           >
             <span>20 Juin 2026 • Montréal</span>
             <span class="hidden md:block text-sable/40">•</span>
+            <span>17 Décembre 2026 • Cotonou</span>
+            <span class="hidden md:block text-sable/40">•</span>
             <span>19 Décembre 2026 • Cotonou</span>
           </div>
 
@@ -177,9 +179,27 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
       </template>
 
       <template #bottom>
-        <div class="w-full border-t border-ivory/10 pt-8">
+        <div class="w-full border-t border-ivory/10 pt-8 flex flex-col items-center gap-3">
+          <div class="flex items-center gap-4 font-body text-xs text-ivory/30 tracking-widest uppercase">
+            <NuxtLink to="/mentions-legales" class="underline hover:text-ivory/60 transition-colors duration-200">
+              Mentions légales
+            </NuxtLink>
+            <span class="text-ivory/20">•</span>
+            <NuxtLink
+              to="/politique-de-confidentialite"
+              class="underline hover:text-ivory/60 transition-colors duration-200"
+            >
+              Politique de confidentialité
+            </NuxtLink>
+          </div>
           <p class="font-body text-xs text-ivory/30 tracking-widest text-center uppercase">
-            © {{ new Date().getFullYear() }} Lumina Consulting. Tous droits réservés.
+            © {{ new Date().getFullYear() }} <a
+              href="https://luminaconsulting.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline hover:text-ivory/60 transition-colors duration-200"
+            >Lumina
+              Consulting</a>. Tous droits réservés.
           </p>
         </div>
       </template>

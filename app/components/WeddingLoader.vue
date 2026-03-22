@@ -91,7 +91,7 @@ onMounted(async () => {
               </h2>
               <div class="h-px w-16 bg-sable/40 my-4" />
               <p class="font-body text-xs tracking-widest uppercase text-sable-dark font-bold text-center">
-                20 Juin 2026<br>19 Décembre 2026
+                20 Juin 2026<br>17 Décembre 2026<br>19 Décembre 2026
               </p>
               <p class="font-body text-[10px] text-muted-foreground mt-4 uppercase tracking-tighter">
                 MONTRÉAL | COTONOU

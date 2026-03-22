@@ -4,6 +4,11 @@ import type { FormSubmitEvent } from "@nuxt/ui";
 import { motion } from "motion-v";
 import { z } from "zod";
 
+useSeoMeta({
+  title: "RSVP",
+  description: "Confirmez votre présence à notre mariage avant le 15 août 2026.",
+});
+
 const schema = z.object({
   name: z.string().min(2, "Votre nom est requis."),
   email: z.email("Votre email est invalide."),
@@ -25,6 +30,8 @@ const state = reactive<Partial<Schema>>({
 });
 
 const isSubmitting = ref(false);
+const isSubmitted = ref(false);
+const submitError = ref<string | null>(null);
 
 const presenceOptions = [
   { label: "Je serai présent(e) avec joie", value: "yes" },
@@ -33,13 +40,17 @@ const presenceOptions = [
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   isSubmitting.value = true;
-
-  // Simulate API call
-  // eslint-disable-next-line no-console
-  console.log("Données RSVP:", event.data);
-
-  await new Promise(resolve => setTimeout(resolve, 1500));
-  isSubmitting.value = false;
+  submitError.value = null;
+  try {
+    await $fetch("/api/rsvp", { method: "POST", body: event.data });
+    isSubmitted.value = true;
+  }
+  catch {
+    submitError.value = "Une erreur est survenue. Veuillez réessayer.";
+  }
+  finally {
+    isSubmitting.value = false;
+  }
 }
 </script>
 
@@ -75,6 +86,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       </motion.div>
 
       <motion.div
+        v-if="!isSubmitted"
         :initial="{ opacity: 0, y: 30 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.8, delay: 0.2 }"
@@ -185,6 +197,13 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
             />
           </UFormField>
 
+          <p
+            v-if="submitError"
+            class="text-red-600 text-sm text-center font-medium"
+          >
+            {{ submitError }}
+          </p>
+
           <UButton
             type="submit"
             label="Envoyer ma réponse"
@@ -194,6 +213,43 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
             class="rounded-full py-2 text-base text-primary-foreground font-bold shadow-lg hover:shadow-primary/30 transition-all hover:-translate-y-1 active:scale-[0.98]"
           />
         </UForm>
+      </motion.div>
+
+      <motion.div
+        v-else
+        :initial="{ opacity: 0, y: 30 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.8 }"
+        class="bg-card border border-marine/10 shadow-xl rounded-2xl p-8 md:p-12 text-center"
+      >
+        <div class="flex items-center justify-center gap-4 mb-8">
+          <div class="w-16 h-px bg-sable/60" />
+          <Icon
+            name="i-lucide-heart"
+            class="text-sable"
+            size="24"
+          />
+          <div class="w-16 h-px bg-sable/60" />
+        </div>
+        <h2 class="font-display text-3xl md:text-4xl text-foreground mb-4">
+          Merci, {{ state.name }} !
+        </h2>
+        <p class="font-body text-muted-foreground text-lg leading-relaxed">
+          Nous avons bien reçu votre réponse.<br>
+          Un email de confirmation vous a été envoyé.
+        </p>
+        <div class="flex items-center justify-center gap-4 mt-8">
+          <div class="w-16 h-px bg-sable/60" />
+          <Icon
+            name="i-lucide-heart"
+            class="text-sable"
+            size="20"
+          />
+          <div class="w-16 h-px bg-sable/60" />
+        </div>
+        <p class="font-display text-muted-foreground tracking-wide uppercase text-sm mt-8">
+          Christiane &amp; Stéphane
+        </p>
       </motion.div>
     </div>
   </section>

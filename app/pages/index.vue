@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { AnimatePresence, motion } from "motion-v";
 
+useHead({ titleTemplate: null });
+useSeoMeta({
+  title: "Mariage de Christiane & Stéphane",
+});
+
 const activeWedding = ref<"montreal" | "cotonou" | null>(null);
 
 const montrealItems = { title: "Montréal", date: "20 Juin 2026", location: "Canada" };
-const cotonouItems = { title: "Cotonou", date: "19 Décembre 2026", location: "Bénin" };
+const cotonouItems = { title: "Cotonou", date: "17 & 19 Décembre 2026", location: "Bénin" };
 
 function handleClose(e: Event) {
   e.stopPropagation();
@@ -143,19 +148,21 @@ function handleClose(e: Event) {
       @click="activeWedding = 'montreal'"
     >
       <NuxtImg
-        src="/images/hero-montreal.jpg"
+        src="/images/hero-montreal-2.jpg"
         alt="Christiane & Stéphane - Montréal"
         class="absolute inset-0 w-full h-full object-cover object-left"
         loading="eager"
         preload
       />
-      <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+      <div class="absolute inset-0 bg-black/60 group-hover:bg-black/30 transition-colors duration-500" />
 
       <div
         v-if="activeWedding !== 'montreal'"
         class="absolute bottom-16 left-1/4 -translate-x-1/2 z-50 flex flex-col items-center gap-1.5"
       >
-        <span class="text-white font-bold tracking-[0.6em] uppercase text-xs transition-all duration-500 group-hover:tracking-[0.9em] group-hover:-translate-y-1 inline-block">
+        <span
+          class="text-white font-bold tracking-[0.6em] uppercase text-xs transition-all duration-500 group-hover:tracking-[0.9em] group-hover:-translate-y-1 inline-block"
+        >
           Montréal
         </span>
         <span class="block h-px w-4 bg-white/60 transition-all duration-500 group-hover:w-8" />
@@ -193,13 +200,15 @@ function handleClose(e: Event) {
         loading="eager"
         preload
       />
-      <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-colors duration-500" />
+      <div class="absolute inset-0 bg-black/60 group-hover:bg-black/30 transition-colors duration-500" />
 
       <div
         v-if="activeWedding !== 'cotonou'"
         class="absolute bottom-16 right-1/4 translate-x-1/2 z-50 flex flex-col items-center gap-1.5"
       >
-        <span class="text-white font-bold tracking-[0.6em] uppercase text-xs transition-all duration-500 group-hover:tracking-[0.9em] group-hover:-translate-y-1 inline-block">
+        <span
+          class="text-white font-bold tracking-[0.6em] uppercase text-xs transition-all duration-500 group-hover:tracking-[0.9em] group-hover:-translate-y-1 inline-block"
+        >
           Cotonou
         </span>
         <span class="block h-px w-4 bg-white/60 transition-all duration-500 group-hover:w-8" />

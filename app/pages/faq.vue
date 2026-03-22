@@ -4,6 +4,11 @@ import type { AccordionItem } from "@nuxt/ui";
 import { useIntersectionObserver } from "@vueuse/core";
 import { motion } from "motion-v";
 
+useSeoMeta({
+  title: "FAQ",
+  description: "Vos questions sur le mariage, le thème, le RSVP et les cadeaux — tout ce qu'il faut savoir.",
+});
+
 const headerRef = ref(null);
 const accordionRef = ref(null);
 const isHeaderInView = ref(false);
@@ -60,6 +65,11 @@ const faqItems = [
     label: "Puis-je offrir un cadeau ?",
     slot: "gift" as const,
     icon: "i-lucide-gift",
+  },
+  {
+    label: "Comment se rendre à la Chapelle Notre-Dame-du-Sacré-Cœur ?",
+    slot: "transport" as const,
+    icon: "i-lucide-navigation",
   },
   {
     label: "Que pouvez-vous faire au Vieux-Port de Montréal ?",
@@ -156,8 +166,7 @@ const faqItems = [
           <template #rsvp>
             <div class="space-y-4">
               <p class="text-muted-foreground leading-relaxed">
-                Merci de confirmer votre présence avant le <span class="text-marine font-semibold">15 août
-                  2026</span> via notre formulaire en ligne. Cela nous aidera à organiser au mieux cette journée avec
+                Merci de confirmer votre présence via notre formulaire en ligne. Cela nous aidera à organiser au mieux cette journée avec
                 vous.
               </p>
               <UButton
@@ -199,6 +208,52 @@ const faqItems = [
               <p class="text-sm text-muted-foreground/70 italic">
                 Merci du fond du cœur !
               </p>
+            </div>
+          </template>
+
+          <!-- Transport -->
+          <template #transport>
+            <div class="space-y-5 text-muted-foreground leading-relaxed">
+              <div class="space-y-1">
+                <p class="font-semibold text-marine">
+                  Métro
+                </p>
+                <p>Station Place-d'Armes (ligne orange)</p>
+              </div>
+              <div class="space-y-2">
+                <p class="font-semibold text-marine">
+                  Véhicule motorisé
+                </p>
+                <p>Veuillez noter que la basilique ne dispose pas de stationnement. Il est toutefois possible de se garer dans la rue (parcomètres) ou dans les stationnements payants du Vieux-Montréal.</p>
+                <div class="flex flex-col gap-2 pt-1">
+                  <a
+                    href="https://assets.fabriquenotredame.ca/production/Basilique/Depliants-et-cartes/Carte-de-stationnement_Vieux-Montreal.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm text-marine hover:text-sable-dark transition-colors duration-200"
+                  >
+                    <UIcon
+                      name="i-lucide-file-text"
+                      class="shrink-0"
+                      size="15"
+                    />
+                    Voir la carte de stationnements du Vieux-Port
+                  </a>
+                  <a
+                    href="https://www.agencemobilitedurable.ca/fr/infos-pratiques/mobicite"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 text-sm text-marine hover:text-sable-dark transition-colors duration-200"
+                  >
+                    <UIcon
+                      name="i-lucide-smartphone"
+                      class="shrink-0"
+                      size="15"
+                    />
+                    Télécharger l'application de parcomètre (Mobicité)
+                  </a>
+                </div>
+              </div>
             </div>
           </template>
 

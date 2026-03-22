@@ -4,6 +4,11 @@ import type { TabsItem } from "@nuxt/ui";
 import { useIntersectionObserver } from "@vueuse/core";
 import { motion } from "motion-v";
 
+useSeoMeta({
+  title: "La Cérémonie",
+  description: "Tous les détails de nos cérémonies à Montréal et Cotonou : lieux, horaires et programme.",
+});
+
 type CeremonyEvent = {
   id: string;
   time: string;
@@ -11,7 +16,6 @@ type CeremonyEvent = {
   venue: string;
   location: string;
   icon: string;
-  mapUrl: string;
   imageUrl: string;
 };
 
@@ -24,7 +28,6 @@ const ceremonyData = {
       venue: "Chapelle Notre-Dame-du-Sacré-Cœur",
       location: "424 Rue St-Sulpice, Montréal QC H2Y 2V5",
       icon: "i-lucide-building-2",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.38883547843!2d-73.5566!3d45.5046",
       imageUrl: "/images/ceremony-montreal-civil.jpg",
     },
     {
@@ -34,7 +37,6 @@ const ceremonyData = {
       venue: "Vieux-Port de Montréal",
       location: "Vieux-Port, Montréal, Canada",
       icon: "i-lucide-camera",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.5!2d-73.5545!3d45.5050",
       imageUrl: "/images/ceremony-montreal-photoshoot.jpg",
     },
     {
@@ -44,7 +46,6 @@ const ceremonyData = {
       venue: "Salle Notre-Dame — Basilique Notre-Dame",
       location: "424 Rue St-Sulpice, Montréal QC H2Y 2V5",
       icon: "i-lucide-glass-water",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.38883547843!2d-73.5566!3d45.5046",
       imageUrl: "/images/ceremony-montreal-cocktail.jpg",
     },
   ],
@@ -56,28 +57,25 @@ const ceremonyData = {
       venue: "À confirmer",
       location: "Cotonou, Bénin",
       icon: "i-lucide-users",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2!2d2.41!",
       imageUrl: "/images/drapeau-benin.svg",
     },
     {
       id: "cot-church",
-      time: "19 décembre — 14h00",
+      time: "19 décembre — À confirmer",
       title: "Cérémonie Religieuse",
       venue: "Église Protestante Méthodiste de Gbeto (EPMB)",
       location: "Rue 407, Cotonou, Bénin",
       icon: "i-lucide-church",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1!2d2.43!",
-      imageUrl: "/images/drapeau-benin.svg",
+      imageUrl: "/images/ceremony-cotonou-church.jpg",
     },
     {
       id: "cot-gala",
-      time: "19 décembre — 19h00",
+      time: "19 décembre — À confirmer",
       title: "Grande Réception",
       venue: "Françoise's Garden — Thé Venue",
       location: "Boulevard de la Marina, Cotonou, Bénin",
       icon: "i-lucide-party-popper",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.3!2d2.42!",
-      imageUrl: "/images/drapeau-benin.svg",
+      imageUrl: "/images/ceremony-cotonou-gala.jpg",
     },
   ],
 };
@@ -97,6 +95,8 @@ const items = ref<TabsItem[]>([
 
 const isModalOpen = ref(false);
 const selectedEvent = ref<CeremonyEvent | null>(null);
+const mapError = ref(false);
+const mapLoading = ref(false);
 const sectionRef = ref(null);
 const isInView = ref(false);
 
@@ -107,6 +107,8 @@ useIntersectionObserver(sectionRef, (entries) => {
 }, { threshold: 0.1 });
 
 function openMap(event: CeremonyEvent) {
+  mapError.value = false;
+  mapLoading.value = true;
   selectedEvent.value = event;
   isModalOpen.value = true;
 }
@@ -225,16 +227,40 @@ function closeModal() {
             </div>
 
             <div class="relative w-full h-[60vh]">
-              <iframe
+              <div
+                v-if="mapLoading && !mapError"
+                class="absolute inset-0 flex items-center justify-center bg-ivory-dark/60"
+              >
+                <Icon
+                  name="i-lucide-loader-2"
+                  class="animate-spin text-marine"
+                  size="32"
+                />
+              </div>
+              <img
+                v-if="selectedEvent && !mapError"
+                :src="`/api/map-image?address=${encodeURIComponent(selectedEvent.location)}`"
+                class="w-full h-full object-cover transition-opacity duration-300"
+                :class="[mapLoading ? 'opacity-0' : 'opacity-100']"
+                :alt="`Carte : ${selectedEvent.venue}, ${selectedEvent.location}`"
+                @load="mapLoading = false"
+                @error="mapError = true; mapLoading = false"
+              >
+              <div
+                v-else-if="mapError"
+                class="w-full h-full flex items-center justify-center font-body text-sm text-muted-foreground"
+              >
+                Impossible de charger la carte.
+              </div>
+              <a
                 v-if="selectedEvent"
-                :src="selectedEvent.mapUrl"
-                width="100%"
-                height="100%"
-                style="border: 0"
-                allowfullscreen
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              />
+                :href="`https://maps.google.com/?q=${encodeURIComponent(selectedEvent.location)}`"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="absolute bottom-4 right-4 px-4 py-2 rounded-full bg-ivory-dark text-marine text-sm font-body font-semibold shadow hover:bg-sable/30 transition-colors"
+              >
+                Ouvrir dans Google Maps <span aria-hidden="true">→</span>
+              </a>
             </div>
           </motion.div>
         </div>
