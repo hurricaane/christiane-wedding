@@ -57,7 +57,8 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
       :transition="{ duration: 0.6 }"
     >
       <UHeader
-        mode="drawer"
+        mode="slideover"
+        :ui="{ slideover: { side: 'right' } }"
         class="border-0 transition-all duration-300 w-full z-50"
         :class="[
           isHomepage
@@ -119,6 +120,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
               size="xl"
               :icon="open ? 'i-lucide-x' : 'i-lucide-menu'"
               class="lg:hidden"
+              :class="isHomepage ? 'text-ivory hover:text-ivory/80' : ''"
               aria-label="Menu"
               @click="toggle"
             />
@@ -130,7 +132,19 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
             :items="navigationItems"
             orientation="vertical"
             class="-mx-2.5"
+            :ui="{
+              link: 'font-body text-lg text-ivory/70 hover:text-ivory data-[active]:text-sable transition-colors duration-200 py-3 border-b border-sable/10',
+              list: 'gap-0',
+            }"
           />
+          <div class="mt-auto pt-12 text-center">
+            <p class="font-display text-3xl text-sable/30 italic select-none">
+              C & S
+            </p>
+            <p class="font-body text-xs text-ivory/20 tracking-widest uppercase mt-1">
+              20 Juin · 19 Décembre 2026
+            </p>
+          </div>
         </template>
       </UHeader>
     </Motion>

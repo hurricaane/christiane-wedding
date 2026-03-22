@@ -67,7 +67,7 @@ export default {
               Nous avons bien noté vos préférences alimentaires : <em>{{ dietary }}</em>.
             </EText>
             <EText style="font-size: 16px; line-height: 1.7; color: #3d3d3d; margin: 0 0 20px;">
-              Plus d'informations vous parviendront dans les semaines à venir. En attendant, n'hésitez pas à consulter notre site pour tous les détails sur la cérémonie.
+              Toutes les informations concernant la cérémonie (programme, lieux, hébergement…) sont disponibles sur notre site. Pensez à le consulter régulièrement, car nous le mettrons à jour au fil des semaines : <a href="https://christiane-et-stephane.luminaconsulting.fr" style="color: #8b7355;">christiane-et-stephane.luminaconsulting.fr</a>
             </EText>
           </template>
 
