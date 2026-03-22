@@ -20,6 +20,10 @@ export default {
       type: String as () => "yes" | "no",
       required: true,
     },
+    dates: {
+      type: Array as () => string[],
+      default: () => [],
+    },
     dietary: {
       type: String,
       default: "",
@@ -58,8 +62,16 @@ export default {
               <EText style="font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #8b7355; margin: 0 0 8px;">
                 Détails de la célébration
               </EText>
-              <EText style="font-size: 15px; color: #2c2c2c; margin: 0;">
-                📅 19 Décembre 2026<br>
+              <EText v-if="dates.includes('17-dec')" style="font-size: 15px; color: #2c2c2c; margin: 0 0 4px;">
+                📅 17 Décembre 2026 — Cérémonie Traditionnelle
+              </EText>
+              <EText v-if="dates.includes('19-dec-church')" style="font-size: 15px; color: #2c2c2c; margin: 0 0 4px;">
+                📅 19 Décembre 2026 — Cérémonie Religieuse
+              </EText>
+              <EText v-if="dates.includes('19-dec-reception')" style="font-size: 15px; color: #2c2c2c; margin: 0 0 4px;">
+                📅 19 Décembre 2026 — Grande Réception
+              </EText>
+              <EText style="font-size: 15px; color: #2c2c2c; margin: 4px 0 0;">
                 📍 Cotonou, Bénin
               </EText>
             </ESection>

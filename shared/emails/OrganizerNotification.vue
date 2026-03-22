@@ -23,6 +23,10 @@ export default {
       type: String as () => "yes" | "no",
       required: true,
     },
+    dates: {
+      type: Array as () => string[],
+      default: () => [],
+    },
     dietary: {
       type: String,
       default: "",
@@ -76,6 +80,22 @@ export default {
             </EText>
             <EText :style="`font-size: 15px; margin: 0; font-weight: bold; color: ${attending === 'yes' ? '#2e7d32' : '#c62828'};`">
               {{ attending === 'yes' ? '✓ Présent(e)' : '✗ Absent(e)' }}
+            </EText>
+          </ESection>
+
+          <!-- Row: Dates (conditional) -->
+          <ESection v-if="dates && dates.length > 0" style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #f0f0f0;">
+            <EText style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; margin: 0 0 4px;">
+              Cérémonies
+            </EText>
+            <EText v-if="dates.includes('17-dec')" style="font-size: 15px; color: #2c2c2c; margin: 0 0 2px;">
+              📅 17 Décembre — Cérémonie Traditionnelle
+            </EText>
+            <EText v-if="dates.includes('19-dec-church')" style="font-size: 15px; color: #2c2c2c; margin: 0 0 2px;">
+              📅 19 Décembre — Cérémonie Religieuse
+            </EText>
+            <EText v-if="dates.includes('19-dec-reception')" style="font-size: 15px; color: #2c2c2c; margin: 0;">
+              📅 19 Décembre — Grande Réception
             </EText>
           </ESection>
 
