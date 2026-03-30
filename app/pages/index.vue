@@ -68,7 +68,7 @@ function handleClose(e: Event) {
                 <p
                   class="font-body text-sm md:text-lg lg:text-xl tracking-[0.25em] uppercase font-semibold text-primary-foreground/95"
                 >
-                  FAGON
+                  FAGNON
                 </p>
                 <p
                   class="font-body text-sm md:text-lg lg:text-xl tracking-[0.25em] uppercase font-semibold text-primary-foreground/95"
