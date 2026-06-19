@@ -166,7 +166,8 @@ const faqItems = [
           <template #rsvp>
             <div class="space-y-4">
               <p class="text-muted-foreground leading-relaxed">
-                Merci de confirmer votre présence via notre formulaire en ligne. Cela nous aidera à organiser au mieux cette journée avec
+                Merci de confirmer votre présence via notre formulaire en ligne. Cela nous aidera à organiser au mieux
+                cette journée avec
                 vous.
               </p>
               <UButton
@@ -224,18 +225,25 @@ const faqItems = [
                 <p class="font-semibold text-marine">
                   Véhicule motorisé
                 </p>
-                <p>Veuillez noter que la basilique ne dispose pas de stationnement. Il est toutefois possible de se garer dans la rue (parcomètres) ou dans les stationnements payants du Vieux-Montréal.</p>
+                <p>
+                  Veuillez noter que la basilique ne dispose pas de stationnement. Il est toutefois possible de se
+                  garer dans la rue (parcomètres) ou dans les stationnements payants du Vieux-Montréal.
+                </p>
                 <p>
                   Nous vous recommandons, au besoin, celui-ci qui se situe proche du lieu de cérémonie : <a
-                    href="https://www.google.com/maps/search/?api=1&query=492+Boulevard+Saint-Laurent,+Montreal,+QC+H2Y+3P7"
+                    href="https://maps.app.goo.gl/F2VUAkiyL7Q7hC3q9?g_st=ic"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-flex items-center gap-1 text-marine hover:text-sable-dark transition-colors duration-200"
-                  ><UIcon
-                    name="i-lucide-map-pin"
-                    class="shrink-0"
-                    size="14"
-                  />492 Boul. Saint-Laurent #430, Montreal, Quebec H2Y 3P7</a>. Il coûte 7$ pour chaque 30 minutes pour un maximum de 25$. Comme pour la majorité des stationnements du Vieux-Port, seulement l'argent comptant est accepté comme mode de paiement.
+                  >
+                    <UIcon
+                      name="i-lucide-map-pin"
+                      class="shrink-0"
+                      size="14"
+                    />492 Boul. Saint-Laurent #430, Montreal,
+                    Quebec H2Y 3P7
+                  </a>Il coûte 7$ pour chaque 30 minutes pour un maximum de 25$. Comme pour la majorité des
+                  stationnements du Vieux-Port, seulement l'argent comptant est accepté comme mode de paiement.
                 </p>
                 <div class="flex flex-col gap-2 pt-1">
                   <a
