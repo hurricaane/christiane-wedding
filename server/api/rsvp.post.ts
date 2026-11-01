@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
     }),
     resend.emails.send({
       from: "Christiane & Stéphane <wedding@luminaconsulting.fr>",
-      to: ["couplefagnon@gmail.com"],
+      to: [env!.RSVP_ORGANIZER_EMAIL],
       subject: `Nouveau RSVP — ${name}`,
       html: organizerHtml,
     }),
