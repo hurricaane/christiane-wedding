@@ -1,0 +1,8 @@
+post_create:
+  - pnpm install
+
+files:
+  copy:
+    - .env
+    - .env.local
+    - .vercel
