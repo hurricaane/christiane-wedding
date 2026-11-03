@@ -15,7 +15,7 @@ const schema = z.object({
   attending: z.enum(["yes", "no"], {
     error: "Veuillez nous indiquer votre présence.",
   }),
-  dates: z.array(z.enum(["17-dec", "19-dec-church", "19-dec-reception"])).optional(),
+  dates: z.array(z.enum(["19-dec-church", "19-dec-reception"])).optional(),
   dietary: z.string().optional(),
   message: z.string().optional(),
 }).superRefine((data, ctx) => {
@@ -62,10 +62,10 @@ const dec19Model = computed({
   },
 });
 
-function toggleDate(date: string, checked: boolean) {
+function toggleDate(date: string, checked: boolean | "indeterminate") {
   if (!state.dates)
     state.dates = [];
-  if (checked) {
+  if (checked === true) {
     if (!state.dates.includes(date as never))
       state.dates = [...state.dates, date as never];
   }
@@ -117,7 +117,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           RSVP
         </h1>
         <p class="font-display text-muted-foreground tracking-wide uppercase text-lg md:text-xl">
-          Cotonou — 17 &amp; 19 Décembre 2026
+          Cotonou — 19 Décembre 2026
         </p>
         <div class="flex items-center justify-center gap-4 mt-6">
           <div class="w-16 h-px bg-sable/60" />
@@ -213,20 +213,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
                 :ui="{ label: 'text-foreground font-semibold mb-4' }"
               >
                 <div class="mt-2 flex flex-col gap-4">
-                  <!-- 17 Décembre -->
-                  <div
-                    class="p-4 border rounded-xl bg-ivory/40 transition-all"
-                    :class="state.dates?.includes('17-dec') ? 'border-primary bg-primary/5' : 'border-primary/10'"
-                  >
-                    <UCheckbox
-                      id="date-17-dec"
-                      :model-value="state.dates?.includes('17-dec')"
-                      label="17 Décembre 2026 — Cérémonie Traditionnelle"
-                      :ui="{ label: 'text-foreground font-medium cursor-pointer' }"
-                      @update:model-value="toggleDate('17-dec', $event)"
-                    />
-                  </div>
-
                   <!-- 19 Décembre (parent + sub-options) -->
                   <div
                     class="border rounded-xl bg-ivory/40 transition-all overflow-hidden"

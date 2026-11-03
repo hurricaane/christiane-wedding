@@ -10,7 +10,7 @@ const schema = z.object({
   name: z.string().min(2),
   email: z.email(),
   attending: z.enum(["yes", "no"]),
-  dates: z.array(z.enum(["17-dec", "19-dec-church", "19-dec-reception"])).optional(),
+  dates: z.array(z.enum(["19-dec-church", "19-dec-reception"])).optional(),
   dietary: z.string().optional(),
   message: z.string().optional(),
 });

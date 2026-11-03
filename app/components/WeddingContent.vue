@@ -100,7 +100,7 @@ const emit = defineEmits(["close"]);
             class="w-4 h-4 group-hover:-translate-x-2 transition-transform"
           />
 
-          <span>Voir l'autre destination</span>
+          <span>Retour</span>
 
           <Icon
             v-if="side === 'left'"
