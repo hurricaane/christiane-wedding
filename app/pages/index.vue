@@ -6,10 +6,9 @@ useSeoMeta({
   title: "Mariage de Christiane & Stéphane",
 });
 
-const activeWedding = ref<"montreal" | "cotonou" | null>(null);
+const activeWedding = ref<"cotonou" | null>(null);
 
-const montrealItems = { title: "Montréal", date: "20 Juin 2026", location: "Canada" };
-const cotonouItems = { title: "Cotonou", date: "17 & 19 Décembre 2026", location: "Bénin" };
+const cotonouItems = { title: "Cotonou", date: "19 Décembre 2026", location: "Bénin" };
 
 function handleClose(e: Event) {
   e.stopPropagation();
@@ -25,7 +24,7 @@ function handleClose(e: Event) {
           :exit="{ opacity: 0, scale: 0.9, transition: { duration: 0.5 } }"
           class="text-center text-primary-foreground w-full"
         >
-          <!-- Inner wrapper: padded to clear Montréal/Cotonou edge labels -->
+          <!-- Inner wrapper: padded to keep text off the screen edges -->
           <div class="px-14 sm:px-16 md:px-24">
             <!-- "Les familles" label -->
             <motion.p
@@ -124,7 +123,7 @@ function handleClose(e: Event) {
             class="flex items-center justify-center gap-6 opacity-50"
           >
             <div class="w-12 h-px bg-sable/60" />
-            <span class="text-[10px] uppercase tracking-[0.4em]">Choisissez une destination</span>
+            <span class="text-[10px] uppercase tracking-[0.4em]">Découvrir</span>
             <div class="w-12 h-px bg-sable/60" />
           </motion.div>
         </motion.div>
@@ -134,69 +133,15 @@ function handleClose(e: Event) {
     <motion.div
       class="absolute inset-0 transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1) group"
       :class="[
-        activeWedding === 'montreal' ? 'z-40' : 'z-20',
-        activeWedding === 'cotonou' ? 'grayscale opacity-30' : 'grayscale-0',
-      ]"
-      :style="{
-        clipPath: activeWedding === 'montreal'
-          ? 'inset(0 0% 0 0)'
-          : activeWedding === 'cotonou'
-            ? 'inset(0 95% 0 0)'
-            : 'inset(0 50% 0 0)',
-      }"
-      :while-hover="!activeWedding ? { scale: 1.03 } : {}"
-      @click="activeWedding = 'montreal'"
-    >
-      <NuxtImg
-        src="/images/hero-montreal-2.jpg"
-        alt="Christiane & Stéphane - Montréal"
-        class="absolute inset-0 w-full h-full object-cover object-left"
-        loading="eager"
-        preload
-      />
-      <div class="absolute inset-0 bg-black/60 group-hover:bg-black/30 transition-colors duration-500" />
-
-      <div
-        v-if="activeWedding !== 'montreal'"
-        class="absolute bottom-16 left-1/4 -translate-x-1/2 z-50 flex flex-col items-center gap-1.5"
-      >
-        <span
-          class="text-white font-bold tracking-[0.6em] uppercase text-xs transition-all duration-500 group-hover:tracking-[0.9em] group-hover:-translate-y-1 inline-block"
-        >
-          Montréal
-        </span>
-        <span class="block h-px w-4 bg-white/60 transition-all duration-500 group-hover:w-8" />
-      </div>
-
-      <div v-if="activeWedding === 'montreal'" class="h-full flex items-center justify-center relative z-50">
-        <WeddingContent
-          v-bind="montrealItems"
-          side="left"
-          @close="handleClose"
-        />
-      </div>
-    </motion.div>
-
-    <motion.div
-      class="absolute inset-0 transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1) group"
-      :class="[
         activeWedding === 'cotonou' ? 'z-40' : 'z-30',
-        activeWedding === 'montreal' ? 'grayscale opacity-30 hover:opacity-100' : 'grayscale-0',
       ]"
-      :style="{
-        clipPath: activeWedding === 'cotonou'
-          ? 'inset(0 0% 0 0)'
-          : activeWedding === 'montreal'
-            ? 'inset(0 0 0 95%)'
-            : 'inset(0 0 0 50%)',
-      }"
       :while-hover="!activeWedding ? { scale: 1.03 } : {}"
       @click="activeWedding = 'cotonou'"
     >
       <NuxtImg
         src="/images/hero-cotonou.jpg"
         alt="Christiane & Stéphane - Cotonou"
-        class="absolute inset-0 w-full h-full object-cover object-left"
+        class="absolute inset-0 w-full h-full object-cover object-[25%_center]"
         loading="eager"
         preload
       />
@@ -204,7 +149,7 @@ function handleClose(e: Event) {
 
       <div
         v-if="activeWedding !== 'cotonou'"
-        class="absolute bottom-16 right-1/4 translate-x-1/2 z-50 flex flex-col items-center gap-1.5"
+        class="absolute bottom-16 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-1.5"
       >
         <span
           class="text-white font-bold tracking-[0.6em] uppercase text-xs transition-all duration-500 group-hover:tracking-[0.9em] group-hover:-translate-y-1 inline-block"

@@ -40,7 +40,7 @@ const timeline = [
   {
     title: "Le Grand Jour",
     subtitle: "Unis pour la vie",
-    place: "Montréal 2026 & Cotonou 2026",
+    place: "Cotonou, 19 décembre 2026",
     description: "Entourés de nos proches, nous célébrerons notre union.",
     icon: "i-lucide-party-popper",
   },

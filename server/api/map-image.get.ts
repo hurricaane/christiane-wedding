@@ -3,9 +3,6 @@ import { Buffer } from "node:buffer";
 
 const ALLOWED_ADDRESSES = new Set(
   [
-    "424 Rue St-Sulpice, Montréal QC H2Y 2V5",
-    "Vieux-Port, Montréal, Canada",
-    "Cotonou, Bénin",
     "9C8F+9F2, Rue 407, Cotonou, Benin",
     "89XX+78C, Boulevard de la Marina, Cotonou, Benin",
   ].map(s => s.trim().toLowerCase()),

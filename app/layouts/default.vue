@@ -58,7 +58,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
     >
       <UHeader
         mode="slideover"
-        :ui="{ slideover: { side: 'right' } }"
+        :menu="{ side: 'right' }"
         class="border-0 transition-all duration-300 w-full z-50"
         :class="[
           isHomepage
@@ -142,7 +142,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
               C & S
             </p>
             <p class="font-body text-xs text-ivory/20 tracking-widest uppercase mt-1">
-              20 Juin · 19 Décembre 2026
+              19 Décembre 2026
             </p>
           </div>
         </template>
@@ -173,10 +173,6 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
           <div
             class="font-body text-sm tracking-widest text-ivory/50 mb-6 flex flex-col md:flex-row items-center gap-2 md:gap-4"
           >
-            <span>20 Juin 2026 • Montréal</span>
-            <span class="hidden md:block text-sable/40">•</span>
-            <span>17 Décembre 2026 • Cotonou</span>
-            <span class="hidden md:block text-sable/40">•</span>
             <span>19 Décembre 2026 • Cotonou</span>
           </div>
 

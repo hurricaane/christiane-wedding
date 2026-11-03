@@ -73,9 +73,6 @@ export default {
               >
                 Détails de la célébration
               </EText>
-              <EText v-if="dates.includes('17-dec')" style="font-size: 15px; color: #2c2c2c; margin: 0 0 4px;">
-                📅 17 Décembre 2026 — Cérémonie Traditionnelle
-              </EText>
               <EText v-if="dates.includes('19-dec-church')" style="font-size: 15px; color: #2c2c2c; margin: 0 0 4px;">
                 📅 19 Décembre 2026 — Cérémonie Religieuse
               </EText>
@@ -128,15 +125,7 @@ export default {
           style="padding: 24px 32px; background-color: #f5ede3; border: 1px solid #e8ddd0; border-top: none; border-radius: 0 0 12px 12px; text-align: center;"
         >
           <EText style="font-size: 12px; color: #8b7355; margin: 0; letter-spacing: 2px; text-transform: uppercase;">
-            <template v-if="dates.includes('17-dec') && (dates.includes('19-dec-church') || dates.includes('19-dec-reception'))">
-              17 &amp; 19 Décembre 2026 · Cotonou, Bénin
-            </template>
-            <template v-else-if="dates.includes('17-dec')">
-              17 Décembre 2026 · Cotonou, Bénin
-            </template>
-            <template v-else>
-              19 Décembre 2026 · Cotonou, Bénin
-            </template>
+            19 Décembre 2026 · Cotonou, Bénin
           </EText>
         </ESection>
       </ESection>

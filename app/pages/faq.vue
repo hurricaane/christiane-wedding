@@ -33,11 +33,9 @@ async function copyEmail() {
 }
 
 const swatches = [
-  { label: "Bleu cobalt", color: "#1e40af" },
-  { label: "Vert olive", color: "#6b7a37" },
-  { label: "Terracotta", color: "#c17a56" },
-  { label: "Doré", color: "#c9a84c" },
-  { label: "Crème", color: "#f5f0e8" },
+  { label: "Aubergine", color: "#59253c" },
+  { label: "Vert olive", color: "#656a42" },
+  { label: "Pêche", color: "#f1b39a" },
 ];
 
 const faqItems = [
@@ -65,16 +63,6 @@ const faqItems = [
     label: "Puis-je offrir un cadeau ?",
     slot: "gift" as const,
     icon: "i-lucide-gift",
-  },
-  {
-    label: "Comment se rendre à la Chapelle Notre-Dame-du-Sacré-Cœur ?",
-    slot: "transport" as const,
-    icon: "i-lucide-navigation",
-  },
-  {
-    label: "Que pouvez-vous faire au Vieux-Port de Montréal ?",
-    content: "Le Vieux-Port de Montréal offre une multitude d'activités pour tous les âges, allant des loisirs en plein air à une promenade dans les rues avoisinantes. En saison estivale, la Place Jacques-Cartier s'anime avec des spectacles de rue, de la musique et des terrasses animées. La Rue Saint-Paul, quant à elle, regorge de petits commerçants et de cafés charmants. Côté gourmandises, ne manquez pas la Queue de Castor, une spécialité emblématique à déguster sur le pouce. Pour les plus aventureux, des attractions comme SOS Labyrinthe, Voiles en Voiles ou encore La Grande Roue de Montréal sauront compléter votre visite.",
-    icon: "i-lucide-map",
   },
   {
     label: "Vous avez une autre question ?",
@@ -209,71 +197,6 @@ const faqItems = [
               <p class="text-sm text-muted-foreground/70 italic">
                 Merci du fond du cœur !
               </p>
-            </div>
-          </template>
-
-          <!-- Transport -->
-          <template #transport>
-            <div class="space-y-5 text-muted-foreground leading-relaxed">
-              <div class="space-y-1">
-                <p class="font-semibold text-marine">
-                  Métro
-                </p>
-                <p>Station Place-d'Armes (ligne orange)</p>
-              </div>
-              <div class="space-y-2">
-                <p class="font-semibold text-marine">
-                  Véhicule motorisé
-                </p>
-                <p>
-                  Veuillez noter que la basilique ne dispose pas de stationnement. Il est toutefois possible de se
-                  garer dans la rue (parcomètres) ou dans les stationnements payants du Vieux-Montréal.
-                </p>
-                <p>
-                  Nous vous recommandons, au besoin, celui-ci qui se situe proche du lieu de cérémonie : <a
-                    href="https://maps.app.goo.gl/F2VUAkiyL7Q7hC3q9?g_st=ic"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-1 text-marine hover:text-sable-dark transition-colors duration-200"
-                  >
-                    <UIcon
-                      name="i-lucide-map-pin"
-                      class="shrink-0"
-                      size="14"
-                    />492 Boul. Saint-Laurent #430, Montreal,
-                    Quebec H2Y 3P7
-                  </a>Il coûte 7$ pour chaque 30 minutes pour un maximum de 25$. Comme pour la majorité des
-                  stationnements du Vieux-Port, seulement l'argent comptant est accepté comme mode de paiement.
-                </p>
-                <div class="flex flex-col gap-2 pt-1">
-                  <a
-                    href="https://assets.fabriquenotredame.ca/production/Basilique/Depliants-et-cartes/Carte-de-stationnement_Vieux-Montreal.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 text-sm text-marine hover:text-sable-dark transition-colors duration-200"
-                  >
-                    <UIcon
-                      name="i-lucide-file-text"
-                      class="shrink-0"
-                      size="15"
-                    />
-                    Voir la carte de stationnements du Vieux-Port
-                  </a>
-                  <a
-                    href="https://www.agencemobilitedurable.ca/fr/infos-pratiques/mobicite"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 text-sm text-marine hover:text-sable-dark transition-colors duration-200"
-                  >
-                    <UIcon
-                      name="i-lucide-smartphone"
-                      class="shrink-0"
-                      size="15"
-                    />
-                    Télécharger l'application de parcomètre (Mobicité)
-                  </a>
-                </div>
-              </div>
             </div>
           </template>
 

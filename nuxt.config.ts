@@ -56,7 +56,7 @@ export default defineNuxtConfig({
   },
   seo: {
     meta: {
-      description: "Célébrez avec nous notre union à Montréal le 20 juin 2026 et à Cotonou le 19 décembre 2026.",
+      description: "Célébrez avec nous notre union à Cotonou le 19 décembre 2026.",
       ogImage: "/images/metadata-image.jpg",
       ogType: "website",
       twitterCard: "summary_large_image",

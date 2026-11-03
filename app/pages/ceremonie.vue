@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import type { TabsItem } from "@nuxt/ui";
-
 import { useIntersectionObserver } from "@vueuse/core";
 import { motion } from "motion-v";
 
 useSeoMeta({
   title: "La Cérémonie",
-  description: "Tous les détails de nos cérémonies à Montréal et Cotonou : lieux, horaires et programme.",
+  description: "Tous les détails de nos cérémonies à Cotonou : lieux, horaires et programme.",
 });
 
 type CeremonyEvent = {
@@ -20,45 +18,7 @@ type CeremonyEvent = {
 };
 
 const ceremonyData = {
-  montreal: [
-    {
-      id: "mtl-civil",
-      time: "12h00",
-      title: "Cérémonie Civile",
-      venue: "Chapelle Notre-Dame-du-Sacré-Cœur",
-      location: "424 Rue St-Sulpice, Montréal QC H2Y 2V5",
-      icon: "i-lucide-building-2",
-      imageUrl: "/images/ceremony-montreal-civil.jpg",
-    },
-    {
-      id: "mtl-photo",
-      time: "13h00",
-      title: "Séance Photo",
-      venue: "Vieux-Port de Montréal",
-      location: "Vieux-Port, Montréal, Canada",
-      icon: "i-lucide-camera",
-      imageUrl: "/images/ceremony-montreal-photoshoot.jpg",
-    },
-    {
-      id: "mtl-cocktail",
-      time: "14h00",
-      title: "Cocktail Urbain",
-      venue: "Salle Notre-Dame — Basilique Notre-Dame",
-      location: "424 Rue St-Sulpice, Montréal QC H2Y 2V5",
-      icon: "i-lucide-glass-water",
-      imageUrl: "/images/ceremony-montreal-cocktail.jpg",
-    },
-  ],
   cotonou: [
-    {
-      id: "cot-trad",
-      time: "17 décembre — À confirmer",
-      title: "Cérémonie Traditionnelle",
-      venue: "À confirmer",
-      location: "Cotonou, Bénin",
-      icon: "i-lucide-users",
-      imageUrl: "/images/drapeau-benin.svg",
-    },
     {
       id: "cot-church",
       time: "19 décembre — À confirmer",
@@ -79,19 +39,6 @@ const ceremonyData = {
     },
   ],
 };
-
-const items = ref<TabsItem[]>([
-  {
-    slot: "montreal" as const,
-    label: "Montréal",
-    icon: "i-lucide-map-pin",
-  },
-  {
-    slot: "cotonou" as const,
-    label: "Cotonou",
-    icon: "i-lucide-map-pin",
-  },
-]);
 
 const isModalOpen = ref(false);
 const selectedEvent = ref<CeremonyEvent | null>(null);
@@ -155,43 +102,16 @@ function closeModal() {
         :animate="isInView ? { opacity: 1, y: 0 } : {}"
         :transition="{ duration: 0.8, delay: 0.2 }"
       >
-        <UTabs
-          :items="items"
-          variant="pill"
-          class="w-full max-w-6xl mx-auto"
-          :ui="{
-            root: 'flex-col gap-8',
-            list: 'bg-primary/10 p-1.5 rounded-full max-w-xs mx-auto',
-            indicator: 'bg-primary rounded-full shadow-md',
-            trigger: 'data-[state=active]:text-primary-foreground data-[state=inactive]:text-foreground/50 hover:data-[state=inactive]:not-disabled:text-foreground/30 text-primary font-bold transition-all duration-300 cursor-pointer',
-          }"
-        >
-          <template #montreal>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-              <EventCard
-                v-for="(event, index) in ceremonyData.montreal"
-                :key="event.id"
-                :event="event"
-                :index="index"
-                :is-in-view="isInView"
-                @open-map="openMap"
-              />
-            </div>
-          </template>
-
-          <template #cotonou>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-              <EventCard
-                v-for="(event, index) in ceremonyData.cotonou"
-                :key="event.id"
-                :event="event"
-                :index="index"
-                :is-in-view="isInView"
-                @open-map="openMap"
-              />
-            </div>
-          </template>
-        </UTabs>
+        <div class="grid md:grid-cols-2 gap-8 mt-8 w-full max-w-4xl mx-auto">
+          <EventCard
+            v-for="(event, index) in ceremonyData.cotonou"
+            :key="event.id"
+            :event="event"
+            :index="index"
+            :is-in-view="isInView"
+            @open-map="openMap"
+          />
+        </div>
       </Motion>
     </div>
 
