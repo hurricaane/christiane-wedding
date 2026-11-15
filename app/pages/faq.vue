@@ -24,12 +24,20 @@ useIntersectionObserver(accordionRef, (entries) => {
     isAccordionInView.value = true;
 }, { threshold: 0.1 });
 
-const emailCopied = ref(false);
+// MTN Mobile Money (MoMo) number — leave empty until the couple has one; the line appears once it's set.
+const momoNumber = "";
 
-async function copyEmail() {
-  await navigator.clipboard.writeText("couplefagnon@gmail.com");
-  emailCopied.value = true;
-  setTimeout(() => emailCopied.value = false, 2000);
+const giftOptions = [
+  { label: "Interac", value: "couplefagnon@gmail.com", icon: "i-lucide-mail" },
+  ...(momoNumber ? [{ label: "Mobile Money (MTN)", value: momoNumber, icon: "i-lucide-smartphone" }] : []),
+];
+
+const copiedValue = ref<string | null>(null);
+
+async function copyValue(value: string) {
+  await navigator.clipboard.writeText(value);
+  copiedValue.value = value;
+  setTimeout(() => copiedValue.value = null, 2000);
 }
 
 const swatches = [
@@ -53,11 +61,6 @@ const faqItems = [
     label: "Comment confirmer ma présence ?",
     slot: "rsvp" as const,
     icon: "i-lucide-calendar-check",
-  },
-  {
-    label: "Puis-je prendre des photos pendant la cérémonie ?",
-    content: "Oui, vous êtes libres de prendre des photos pendant la cérémonie si vous le souhaitez. Un QR code sera mis à disposition pour vous permettre de partager facilement vos plus beaux clichés avec nous pendant et après le mariage.",
-    icon: "i-lucide-camera",
   },
   {
     label: "Puis-je offrir un cadeau ?",
@@ -174,24 +177,24 @@ const faqItems = [
           <template #gift>
             <div class="space-y-4">
               <p class="text-muted-foreground leading-relaxed">
-                Votre présence lors de cette journée spéciale signifie beaucoup pour nous,
-                et nous apprécions l'amour et le soutien que vous nous apportez. Si vous
-                souhaitez nous honorer avec un cadeau, nous apprécierions grandement une
-                contribution financière pour notre avenir commun. Vous pouvez le faire
-                via le lien ci-dessous ou via Interac.
+                Oui, avec plaisir ! Si vous souhaitez nous offrir un cadeau, vous pouvez nous
+                faire un virement Interac ou un envoi par Mobile Money
+                (MoMo){{ momoNumber ? " ci-dessous" : " dont le numéro vous sera communiqué ultérieurement" }}. Nous acceptons également les enveloppes le jour du mariage.
               </p>
               <div class="flex flex-col sm:flex-row gap-3 pt-1">
                 <button
+                  v-for="option in giftOptions"
+                  :key="option.label"
                   class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-marine/15 bg-ivory/60 text-sm font-body text-foreground/70 hover:border-sable/40 hover:bg-sable/10 transition-all duration-200 cursor-pointer select-none"
-                  @click="copyEmail"
+                  @click="copyValue(option.value)"
                 >
                   <UIcon
-                    :name="emailCopied ? 'i-lucide-check' : 'i-lucide-mail'"
+                    :name="copiedValue === option.value ? 'i-lucide-check' : option.icon"
                     class="text-sable shrink-0 transition-all duration-200"
                     size="16"
                   />
-                  <span>Interac : <span class="text-marine font-medium">couplefagnon@gmail.com</span></span>
-                  <span class="ml-1 text-xs text-sable/70">{{ emailCopied ? 'Copié !' : 'Copier' }}</span>
+                  <span>{{ option.label }} : <span class="text-marine font-medium">{{ option.value }}</span></span>
+                  <span class="ml-1 text-xs text-sable/70">{{ copiedValue === option.value ? 'Copié !' : 'Copier' }}</span>
                 </button>
               </div>
               <p class="text-sm text-muted-foreground/70 italic">

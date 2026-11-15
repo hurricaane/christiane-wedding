@@ -10,7 +10,6 @@ const schema = z.object({
   name: z.string().min(2),
   email: z.email(),
   attending: z.enum(["yes", "no"]),
-  dates: z.array(z.enum(["19-dec-church", "19-dec-reception"])).optional(),
   dietary: z.string().optional(),
   message: z.string().optional(),
 });
@@ -23,13 +22,13 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, message: "Invalid form data" });
   }
 
-  const { name, email, attending, dates, dietary, message } = parsed.data;
+  const { name, email, attending, dietary, message } = parsed.data;
 
   const resend = new Resend(env?.RESEND_API_KEY);
 
   const [guestHtml, organizerHtml] = await Promise.all([
-    render(GuestConfirmation, { name, attending, dates: dates ?? [], dietary: dietary ?? "" }),
-    render(OrganizerNotification, { name, email, attending, dates: dates ?? [], dietary: dietary ?? "", message: message ?? "" }),
+    render(GuestConfirmation, { name, attending, dietary: dietary ?? "" }),
+    render(OrganizerNotification, { name, email, attending, dietary: dietary ?? "", message: message ?? "" }),
   ]);
 
   const [guestResult, organizerResult] = await Promise.all([

@@ -21,7 +21,7 @@ const ceremonyData = {
   cotonou: [
     {
       id: "cot-church",
-      time: "19 décembre — À confirmer",
+      time: "19 décembre — 14h",
       title: "Cérémonie Religieuse",
       venue: "Église Protestante Méthodiste de Gbeto (EPMB)",
       location: "9C8F+9F2, Rue 407, Cotonou, Benin",

@@ -20,10 +20,6 @@ export default {
       type: String as () => "yes" | "no",
       required: true,
     },
-    dates: {
-      type: Array as () => string[],
-      default: () => [],
-    },
     dietary: {
       type: String,
       default: "",
@@ -65,33 +61,15 @@ export default {
               Nous sommes profondément touchés par votre présence à nos côtés. Votre RSVP a bien été enregistré — nous
               avons hâte de partager ce moment inoubliable avec vous.
             </EText>
-            <ESection
-              style="background-color: #fdf8f3; border: 1px solid #e8ddd0; border-radius: 8px; padding: 20px 24px; margin: 24px 0;"
-            >
-              <EText
-                style="font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #8b7355; margin: 0 0 8px;"
-              >
-                Détails de la célébration
-              </EText>
-              <EText v-if="dates.includes('19-dec-church')" style="font-size: 15px; color: #2c2c2c; margin: 0 0 4px;">
-                📅 19 Décembre 2026 — Cérémonie Religieuse
-              </EText>
-              <EText
-                v-if="dates.includes('19-dec-reception')"
-                style="font-size: 15px; color: #2c2c2c; margin: 0 0 4px;"
-              >
-                📅 19 Décembre 2026 — Grande Réception
-              </EText>
-              <EText style="font-size: 15px; color: #2c2c2c; margin: 4px 0 0;">
-                📍 Cotonou, Bénin
-              </EText>
-            </ESection>
             <EText v-if="dietary" style="font-size: 15px; line-height: 1.7; color: #3d3d3d; margin: 0 0 20px;">
               Nous avons bien noté vos préférences alimentaires : <em>{{ dietary }}</em>.
             </EText>
             <EText style="font-size: 16px; line-height: 1.7; color: #3d3d3d; margin: 0 0 20px;">
-              Toutes les informations concernant la cérémonie (programme, lieux…) sont disponibles sur notre site.
-              Pensez à le consulter régulièrement, car nous le mettrons à jour au fil des semaines : <a
+              Vous recevrez ultérieurement la carte d'invitation qui contiendra tous les détails concernant la journée
+              (programme, lieux, couleurs, etc).
+            </EText>
+            <EText style="font-size: 16px; line-height: 1.7; color: #3d3d3d; margin: 0 0 20px;">
+              En attendant, si vous le souhaitez, vous trouverez aussi quelques informations utiles sur notre site : <a
                 href="https://christiane-et-stephane.luminaconsulting.fr"
                 style="color: #8b7355;"
               >christiane-et-stephane.luminaconsulting.fr</a>

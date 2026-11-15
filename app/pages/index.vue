@@ -123,7 +123,7 @@ function handleClose(e: Event) {
             class="flex items-center justify-center gap-6 opacity-50"
           >
             <div class="w-12 h-px bg-sable/60" />
-            <span class="text-[10px] uppercase tracking-[0.4em]">Découvrir</span>
+            <span class="text-[10px] uppercase tracking-[0.4em]">RSVP</span>
             <div class="w-12 h-px bg-sable/60" />
           </motion.div>
         </motion.div>
